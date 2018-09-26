@@ -1,0 +1,9 @@
+(list (build-machine
+        (name "")
+        (system "x86_64-linux")
+        (host-key "")
+        (port 2222)
+        (parallel-builds 2)
+        (private-key "/home/root/.ssh/id_rsa")
+        (user "")
+        (speed 4.)))

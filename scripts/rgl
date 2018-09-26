@@ -1,0 +1,11 @@
+MESA=`readlink -f /gnu/store/*mesa-17.3.6/lib | head -n 1 | tr -d '\n'`
+NOUVEAU=$MESA/dri
+
+echo MESA $MESA
+echo NOVEAU $NOUVEAU
+
+LIBGL_DEBUG=verbose \
+LD_LIBRARY_PATH=$MESA:$NOUVEAU:LD_LIBRARY_PATH \
+LIBGL_DRIVERS_PATH=$NOUVEAU:LIBGL_DRIVERS_PATH \
+	$@
+

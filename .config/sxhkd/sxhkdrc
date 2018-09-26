@@ -1,0 +1,50 @@
+XF86Audio{Lower,Raise}Volume
+	amixer -c 0 set PCM 10{-,+}
+
+XF86AudioMute
+	amixer set PCM 0%
+
+XF86Audio{Prev,Next,Play,Stop}
+	mpc {prev,next,toggle,stop}
+
+super + shift + Return
+	kitty
+
+super + Escape
+	pkill -USR1 -x sxhkd
+
+super + alt + Escape
+	bspc quit
+
+super + {_,shift +}c
+	bspc node -{c,k}
+
+super + f
+	bspc node -t fullscreen
+
+super + g
+	bspc node -s biggest
+
+super + {_,shift}{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+XF86{Back,Forward}
+	{WINDOW=left;DESKTOP=prev;,WINDOW=right;DESKTOP=next;} \
+	if ! bspc window -f $WINDOW; then \
+		bspc desktop -f $DESKTOP; \
+	fi
+
+super + {_,shift +}{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+{_,shift +}Menu
+	{surf -g -N https://searx.me,zathura}
+
+super + {_,shift +} space
+	bspc node -t {tiled, floating}
+
+super + v
+  mpv $(xclip -o -sel clip)
+
+super + p
+	dmenu_run
